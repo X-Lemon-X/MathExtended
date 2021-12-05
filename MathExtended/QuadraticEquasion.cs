@@ -24,17 +24,8 @@ namespace MathExtended
 
         public Point CalculateFuntion(double argument)
         {
-            
             double Y = (A * argument * argument) + (B * argument) + vector.GetY();
-
-
             return new Point(argument,Y,vector.GetZ());
         }
-
-
-
-
-
-
     }
 }
