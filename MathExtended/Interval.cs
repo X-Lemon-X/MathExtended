@@ -1,8 +1,8 @@
 ﻿namespace MathExtended
 {
-    class Interval
+    public class Interval
     {
-        double beg, end;
+        private double beg, end;
         Bracket bracketBeg;
         Bracket bracketEnd;
         IntervalTypes intervalType = IntervalTypes.R;

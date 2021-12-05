@@ -2,7 +2,7 @@
 
 namespace MathExtended
 {
-    class IntervalsEquasion
+    public class IntervalsEquasion
     {
         public bool CheckIfInterval(double argument, Interval interval)
         {

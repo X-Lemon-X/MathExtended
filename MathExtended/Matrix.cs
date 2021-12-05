@@ -1,6 +1,6 @@
 ﻿namespace MathExtended
 {
-    class Matrix
+    public class Matrix
     {
         private double[,] matrix;
         public Matrix(double[,] matrix)

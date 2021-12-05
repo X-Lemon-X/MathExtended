@@ -1,7 +1,7 @@
 ﻿
 namespace MathExtended
 {
-    class QuadraticEquasion
+    public class QuadraticEquasion
     {
         double A, B;
         Vector vector;

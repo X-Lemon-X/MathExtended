@@ -1,7 +1,7 @@
 ﻿
 namespace MathExtended
 {
-    class PeriodicFunctionLinear
+    public class PeriodicFunctionLinear
     {
         private double tangens, period;
         private int rotateOX=1, rotateOY=1;

@@ -1,7 +1,7 @@
 ﻿
 namespace MathExtended
 {
-    class Point
+    public class Point
     {
         private double X, Y, Z;
         public Point(double X, double Y, double Z)

@@ -2,7 +2,7 @@
 
 namespace MathExtended
 {
-    class MatrixEquasion
+    public class MatrixEquasion
     {
         public Matrix MatrixRotationX(Matrix matrixToBeRotated, double angle)
         {

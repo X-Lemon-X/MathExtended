@@ -1,7 +1,7 @@
 ﻿
 namespace MathExtended
 {
-    class VectorEquasions
+    public class VectorEquasions
     {
         public Vector AddVectors(Vector vector1, Vector vector2)
         { 

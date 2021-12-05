@@ -2,7 +2,7 @@
 
 namespace MathExtended
 {
-    class Vector
+    public class Vector
     {
         private double X, Y, Z;
         public Vector(double x, double y, double z) 
