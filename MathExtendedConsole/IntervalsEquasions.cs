@@ -4,7 +4,7 @@ namespace MathExtended
 {
     public class IntervalsEquasion
     {
-        public bool CheckIfInterval(double argument, Interval interval)
+        public static bool CheckIfInterval(double argument, Interval interval)
         {
             bool condition = BracketCheck(interval.GetBegBracket(), interval.GetBegining(), argument, false);
 
@@ -13,7 +13,7 @@ namespace MathExtended
             return condition && condition2;
         }
 
-        private bool BracketCheck(Bracket bracket, double value, double valueCompared, bool smaller)
+        private static bool BracketCheck(Bracket bracket, double value, double valueCompared, bool smaller)
         {
             if (smaller)
             {
@@ -33,20 +33,6 @@ namespace MathExtended
             }
 
             return false;
-        }
-
-        public bool CheckIfValueIsNatural(double argument)
-        {
-            double val = argument / Convert.ToDouble((int)(argument));
-            if (val == 1.0 && argument > 0) return true;
-            else return false;
-        }
-
-        public bool CheckIfValueIsInteger(double argument)
-        {
-            double val = argument / Convert.ToDouble((int)(argument));
-            if (val == 1.0 ) return true;
-            else return false;
         }
 
     }

@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace MathExtended
 {
-    class LinearEquasion
+    public class LinearEquasion
     {
         private double tangens;
         Vector vector;
         double rotationX=1, rotationY=1;
-        public LinearEquasion(double tangens, Vector vector)
+        Interval interval;
+        public LinearEquasion(double tangens, Vector vector, Interval interval)
         {
             this.tangens = tangens;
             this.vector = vector;
+            this.interval = interval;
         }
 
         public void Rotate(Rotation rotationOX, Rotation rotationOY)
@@ -28,6 +25,12 @@ namespace MathExtended
 
         public Point CalculateEquasion(double argument)
         {
+
+            if (!IntervalsEquasion.CheckIfInterval(argument, interval))
+            {
+                return new Point();
+            }
+
             double Y = argument - vector.GetX();
             
             Y *= rotationX;
@@ -39,5 +42,9 @@ namespace MathExtended
             return new Point(argument,Y,vector.GetZ());
         }
 
+        public Interval GetInterval()
+        {
+            return interval;
+        }
     }
 }

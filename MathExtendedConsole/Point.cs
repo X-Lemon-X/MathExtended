@@ -16,6 +16,14 @@ namespace MathExtended
             this.Y = vector.GetY();
             this.Z = vector.GetZ();
         }
+
+        public Point()
+        {
+            this.X = double.NaN;
+            this.Y = double.NaN;
+            this.Z = double.NaN;
+        }
+
         public double GetX()
         {
             return this.X;

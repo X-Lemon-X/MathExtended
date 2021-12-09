@@ -38,5 +38,10 @@ namespace MathExtended
             double Y = (A * argument * argument) + (B * argument) + vector.GetY();
             return new Point(argument,Y* rotationY,vector.GetZ());
         }
+
+        public Interval GetInterval()
+        {
+            return interval;
+        }
     }
 }
