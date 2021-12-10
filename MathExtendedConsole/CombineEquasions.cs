@@ -24,12 +24,13 @@ namespace MathExtended
 
         public Point CalculateEquasion(double argument)
         {
-
             foreach (var item in equasions)
             {
-                item.
+                if (IntervalsEquasion.CheckIfInterval(argument, item.GetInterval()))
+                {
+                    return item.CalculateArgument(argument);                 
+                }
             }
-
 
             return new Point();
         }
@@ -57,11 +58,23 @@ namespace MathExtended
             this.type = EquasionsType.Quadratic;
         }
 
-        public LinearEquasion GetLinear()
+        public Interval GetInterval()
         {
-            return linear;
+            return interval;
         }
-    
+ 
+        public Point CalculateArgument(double argument)
+        {
+            switch (type)
+            {
+                case EquasionsType.Linear: return linear.CalculateEquasion(argument);
+                    break;
+                case EquasionsType.Quadratic: return quadratic.CalculateFuntion(argument);
+                    break;
+            }
+
+            return new Point();
+        }
     }
 
     public enum EquasionsType
