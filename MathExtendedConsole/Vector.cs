@@ -23,6 +23,14 @@ namespace MathExtended
             this.Y = pointEnd.GetY() - pointBeg.GetY();
             this.Z = pointEnd.GetZ() - pointBeg.GetZ();
         }
+
+        public Vector()
+        {
+            this.X = 0;
+            this.Y = 0;
+            this.Z = 0;
+
+        }
         public double GetLength()
         {
             return Math.Sqrt(X*X + Y*Y + Z*Z);

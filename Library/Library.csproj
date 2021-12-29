@@ -1,17 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>MathExtended</RootNamespace>
-    <StartupObject></StartupObject>
-    <PackageId>MathExtended</PackageId>
+    <OutputType>Library</OutputType>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>MathExtended_Lemon_X</PackageId>
+    <Version>3.0.5</Version>
     <Authors>Lemon_X</Authors>
     <Company>Lemon_X</Company>
     <Product>MathExtended</Product>
     <RepositoryUrl>https://github.com/X-Lemon-X/MathExtended</RepositoryUrl>
-    <AssemblyVersion>2.0.3.1</AssemblyVersion>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MathExtendedConsole": {
+      "commandName": "Project"
+    },
+    "DebugConsole": {
+      "commandName": "Project"
+    }
+  }
+}

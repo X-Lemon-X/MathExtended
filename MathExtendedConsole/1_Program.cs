@@ -12,15 +12,38 @@ namespace MathExtendedConsole
             Console.WriteLine("Point");
             Console.WriteLine(" x = 10, y =20,  z= 30");
             Point point = new Point(10,20,30);
-            Console.WriteLine(ConvertToString.FromPoint(point));
+            Console.WriteLine(MEConvertToString.FromPoint(point));
 
             Console.WriteLine("Vector");
             Vector vector = new Vector(point);
-            Console.WriteLine(ConvertToString.FromVector(vector));
+            Console.WriteLine(MEConvertToString.FromVector(vector));
 
             Console.WriteLine("Matrix");
 
+
+            Interval interval = new Interval(-50,100, Bracket.Close, Bracket.Open);
+            LinearEquasion linear = new LinearEquasion(2, new Vector(),interval);
+
+            interval = new Interval(100, 150, Bracket.Open, Bracket.Close);
+            LinearEquasion linear2 = new LinearEquasion(-2, new Vector(), interval);
+
+            interval = new Interval(150, 300, Bracket.Open, Bracket.Close);
+            QuadraticEquasion quadratic = new QuadraticEquasion(1,-200,0, interval);
+
+            CombinedEquasions cb = new CombinedEquasions();
+            cb.AddEquasion(linear);
+            cb.AddEquasion(linear2);
+            cb.AddEquasion(quadratic);
+
+
+            for (int i = -55; i < 305; i++)
+            {
+                var po = cb.CalculateEquasion((double)i);
+                Console.WriteLine(MEConvertToString.FromPoint(po));
+            }
             
+            
+
 
             Console.ReadLine();
         }

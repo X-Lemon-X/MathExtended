@@ -7,13 +7,12 @@
         Bracket bracketEnd;
         IntervalTypes intervalType = IntervalTypes.R;
         
-        public Interval(double beg, double end, Bracket bracketBeg, Bracket bracketEnd, IntervalTypes intervalType)
+        public Interval(double beg, double end, Bracket bracketBeg, Bracket bracketEnd)
         {
             this.beg = beg;
             this.end = end;
             this.bracketEnd = bracketEnd;
             this.bracketBeg = bracketBeg;
-            this.intervalType = intervalType;
         }
 
         public Interval(double beg, Bracket bracketBeg)
@@ -75,7 +74,7 @@
 
         public Bracket GetBegBracket()
         {
-            return bracketEnd;
+            return bracketBeg;
         }
     }
 

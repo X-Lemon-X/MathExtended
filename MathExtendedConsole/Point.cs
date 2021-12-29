@@ -4,6 +4,7 @@ namespace MathExtended
     public class Point
     {
         private double X, Y, Z;
+        private bool emptyPoint = false;
         public Point(double X, double Y, double Z)
         {
             this.X = X;
@@ -22,6 +23,7 @@ namespace MathExtended
             this.X = double.NaN;
             this.Y = double.NaN;
             this.Z = double.NaN;
+            this.emptyPoint = true;
         }
 
         public double GetX()
@@ -35,6 +37,11 @@ namespace MathExtended
         public double GetZ()
         {
             return this.Z;
+        }
+
+        public bool CheckIfPointIsEmpty()
+        {
+            return emptyPoint;
         }
     }
 }

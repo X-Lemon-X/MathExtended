@@ -1,13 +1,13 @@
 ﻿
 namespace MathExtended
 {
-    public class PeriodicFunctionLinear
+    public class PeriodicLinearEquasion
     {
         private double tangens, period;
         private int rotationX = 1, rotationY = 1;
         private Vector vector;
         private bool BeginAtZero=true;
-        public PeriodicFunctionLinear(double tangens, Vector vector, double period, bool BeginAtZero)
+        public PeriodicLinearEquasion(double tangens, Vector vector, double period, bool BeginAtZero)
         {
             this.vector = vector;
             this.tangens = tangens;

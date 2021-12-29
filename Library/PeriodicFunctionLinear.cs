@@ -1,35 +1,33 @@
 ﻿
 namespace MathExtended
 {
-    public class PeriodicFunctionLinear
+    public class PeriodicLinearEquasion
     {
         private double tangens, period;
-        private int rotateOX=1, rotateOY=1;
+        private int rotationX = 1, rotationY = 1;
         private Vector vector;
         private bool BeginAtZero=true;
-        public PeriodicFunctionLinear(double tangens, Vector vector, double period, bool BeginAtZero)
+        public PeriodicLinearEquasion(double tangens, Vector vector, double period, bool BeginAtZero)
         {
             this.vector = vector;
             this.tangens = tangens;
             this.period = period;
             this.BeginAtZero = BeginAtZero;
         }
-        public void RotateOX(bool value)
+        public void Rotate(Rotation rotationOX, Rotation rotationOY)
         {
-            if (value) rotateOX = -1;
-            else rotateOX = 1;
-        }
-        public void RotateOY(bool value)
-        {
-            if (value) rotateOY = -1;
-            else rotateOY = 1;
+            if (rotationOX == Rotation.OX) rotationX = -1;
+            if (rotationOX == Rotation.NOX) rotationX = 1;
+
+            if (rotationOY == Rotation.OY) rotationY = -1;
+            if (rotationOY == Rotation.NOY) rotationY = 1;
         }
         public Point CalculateFunction(double argument)
         {
             double Y;
 
             Y = argument - vector.GetX();
-            Y *= rotateOY;
+            Y *= rotationX;
             Y = Y % period;
 
             if (BeginAtZero)
@@ -43,7 +41,7 @@ namespace MathExtended
 
             Y *= tangens;
             Y += vector.GetY();
-            Y *= rotateOX;
+            Y *= rotationY;
             
             return new Point(argument,Y,vector.GetZ());
         }
