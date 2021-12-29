@@ -7,12 +7,14 @@ namespace MathExtended
         private int rotationX = 1, rotationY = 1;
         private Vector vector;
         private bool BeginAtZero=true;
-        public PeriodicLinearEquasion(double tangens, Vector vector, double period, bool BeginAtZero)
+        Interval interval;
+        public PeriodicLinearEquasion(double tangens, Vector vector, double period, bool BeginAtZero, Interval interval)
         {
             this.vector = vector;
             this.tangens = tangens;
             this.period = period;
             this.BeginAtZero = BeginAtZero;
+            this.interval = interval;
         }
         public void Rotate(Rotation rotationOX, Rotation rotationOY)
         {
@@ -24,9 +26,12 @@ namespace MathExtended
         }
         public Point CalculateFunction(double argument)
         {
-            double Y;
+            if (!IntervalsEquasion.CheckValueInInterval(argument, interval))
+            {
+                return new Point();
+            }
 
-            Y = argument - vector.GetX();
+            double Y = argument - vector.GetX();
             Y *= rotationX;
             Y = Y % period;
 
@@ -44,6 +49,11 @@ namespace MathExtended
             Y *= rotationY;
             
             return new Point(argument,Y,vector.GetZ());
+        }
+
+        public Interval GetInterval()
+        {
+            return interval;
         }
 
     }

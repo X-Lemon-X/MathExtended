@@ -8,35 +8,32 @@ namespace MathExtended
 {
     public class Equasion
     {
-        public delegate Point MethodDelegate(double a);
-
         public delegate Point DelegatePoint(double argumet);
-
-        EmptyEquasion emptyEq = new EmptyEquasion();
-        LinearEquasion linear;
-        QuadraticEquasion quadratic;
-        PeriodicLinearEquasion periodicLinearEquasion;
+        public delegate Interval DelegateInterval();
+        DelegatePoint delPoint;
+        DelegateInterval delInterval;
         EquasionsType type;
-        Interval interval;
-
+       
         public Equasion(LinearEquasion linearEquasion)
         {
-            this.linear = linearEquasion;
-            this.interval = linearEquasion.GetInterval();
             this.type = EquasionsType.Linear;
+            this.delPoint = linearEquasion.CalculateFunction;
+            this.delInterval = linearEquasion.GetInterval;
         }
 
         public Equasion(QuadraticEquasion quadraticEquasion)
         {
-            this.quadratic = quadraticEquasion;
-            this.interval = quadraticEquasion.GetInterval();
             this.type = EquasionsType.Quadratic;
+            this.delPoint = quadraticEquasion.CalculateFuntion;
+            this.delInterval = quadraticEquasion.GetInterval;
+
         }
 
         public Equasion(PeriodicLinearEquasion periodicLinearEquasion)
         {
-            this.periodicLinearEquasion = periodicLinearEquasion;
             this.type = EquasionsType.PeriodicLinear;
+            this.delPoint = periodicLinearEquasion.CalculateFunction;
+            this.delInterval = periodicLinearEquasion.GetInterval;
         }
 
         public Equasion()
@@ -46,7 +43,7 @@ namespace MathExtended
 
         public Interval GetInterval()
         {
-            return interval;
+            return delInterval();
         }
 
         public EquasionsType GetEquasionType()
@@ -56,38 +53,7 @@ namespace MathExtended
 
         public Point CalculateArgument(double argument)
         {
-
-           // Dictionary<EquasionsType, Delegate> dictCal = new Dictionary<EquasionsType, Delegate>();
-
-            //dictCal.Add(EquasionsType.Null, new DelegatePoint(emptyEq.CalculateEquasion));
-            //dictCal.Add(EquasionsType.Linear, new DelegatePoint(linear.CalculateFunction));
-            //dictCal.Add(EquasionsType.Quadratic, new DelegatePoint(quadratic.CalculateFuntion));
-            //dictCal.Add(EquasionsType.PeriodicLinear, new DelegatePoint(periodicLinearEquasion.CalculateFunction));
-
-            //var obj =  dictCal[type].DynamicInvoke( argument);
-
-            //return (Point)obj;
-
-            switch (type)
-            {
-                case EquasionsType.Null:
-                    return new Point();
-                    break;
-
-                case EquasionsType.Linear:
-                    return linear.CalculateFunction(argument);
-                    break;
-
-                case EquasionsType.Quadratic:
-                    return quadratic.CalculateFuntion(argument);
-                    break;
-
-                case EquasionsType.PeriodicLinear:
-                    return periodicLinearEquasion.CalculateFunction(argument);
-                    break;
-            }
-
-            return new Point();
+            return delPoint(argument);
         }
     }
 }

@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="LiveCharts.WinForms" Version="0.9.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MathExtendedConsole\MathExtendedConsole.csproj" />
   </ItemGroup>
 

@@ -15,6 +15,10 @@
         {
             this.matrix = matrix.GetMatrix();
         }
+        public Matrix()
+        {
+            SetIdentity();
+        }
         public double[,] GetMatrix()
         {
             return this.matrix;

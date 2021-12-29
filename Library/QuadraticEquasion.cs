@@ -33,7 +33,7 @@ namespace MathExtended
 
         public Point CalculateFuntion(double argument)
         {
-            if (!IntervalsEquasion.CheckIfInterval(argument, interval))
+            if (!IntervalsEquasion.CheckValueInInterval(argument, interval))
             {
                 return new Point();
             }

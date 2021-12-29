@@ -10,22 +10,28 @@ namespace MathExtended
     {
         List<Equasion> equasions = new List<Equasion>();
         
-        public void AddEquasion(LinearEquasion linearEquasion)
+        public int AddEquasion(LinearEquasion linearEquasion)
         {
-            Equasion equasion = new Equasion(linearEquasion);
-            equasions.Add(equasion);
+            return AddEquasionInternal(new Equasion(linearEquasion));
         }
 
-        public void AddEquasion(QuadraticEquasion quadraticEquasion)
+        public int AddEquasion(QuadraticEquasion quadraticEquasion)
         {
-            Equasion equasion = new Equasion(quadraticEquasion);
-            equasions.Add(equasion);
+            return AddEquasionInternal(new Equasion(quadraticEquasion));
+        }
+
+        private int AddEquasionInternal(Equasion equasion)
+        {
+            if (FindEquasionByInterval(equasion) == null)
+            {
+                equasions.Add(equasion);
+                return 1;
+            }
+            return -1;
         }
 
         public Point CalculateEquasion(double argument)
         {
-            //return FindEquasion(argument).CalculateArgument(argument);
-
             foreach (var item in equasions)
             {
                 Point point = item.CalculateArgument(argument);
@@ -52,17 +58,19 @@ namespace MathExtended
                     return item;
                 }
             }
-            return new Equasion();
+            return null;
         }
 
-        private Equasion FindEquasion(Equasion equasion)
+        private Equasion FindEquasionByInterval(Equasion equasion)
         {
             foreach (var item in equasions)
             {
-
+                if (IntervalsEquasion.CheckIfIntervalsAreConnected(equasion.GetInterval(), item.GetInterval()))
+                {
+                    return equasion;
+                }
             }
-
-            return new Equasion();
+            return null;
         }
 
     }

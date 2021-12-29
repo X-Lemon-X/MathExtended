@@ -26,7 +26,7 @@ namespace MathExtended
         public Point CalculateFunction(double argument)
         {
 
-            if (!IntervalsEquasion.CheckIfInterval(argument, interval))
+            if (!IntervalsEquasion.CheckValueInInterval(argument, interval))
             {
                 return new Point();
             }

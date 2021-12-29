@@ -4,7 +4,7 @@ namespace MathExtended
 {
     public class MatrixEquasion
     {
-        public Matrix MatrixRotationX(Matrix matrixToBeRotated, double angle)
+        public static Matrix MatrixRotationX(Matrix matrixToBeRotated, double angle)
         {
             double[,] matrixTable =
             {
@@ -19,7 +19,7 @@ namespace MathExtended
             return MultiplyMatrix(matrix,matrixToBeRotated,1);
         }
 
-        public Matrix MatrixRotationY(Matrix matrixToBeRotated, double angle)
+        public static Matrix MatrixRotationY(Matrix matrixToBeRotated, double angle)
         {
             double[,] matrixTable =
             {
@@ -34,7 +34,7 @@ namespace MathExtended
             return MultiplyMatrix(matrix, matrixToBeRotated, 1);
         }
         
-        public Matrix MatrixRotationZ(Matrix matrixToBeRotated, double angle)
+        public static Matrix MatrixRotationZ(Matrix matrixToBeRotated, double angle)
         {
             double[,] matrixTable =
             {
@@ -49,7 +49,7 @@ namespace MathExtended
             return MultiplyMatrix(matrix, matrixToBeRotated, 1);
         }
         
-        public Matrix MatrixAdd(Matrix matrix1, Matrix matrix2)
+        public static Matrix MatrixAdd(Matrix matrix1, Matrix matrix2)
         {
             double[,] matrixRet = new double[4, 4];
 
@@ -64,7 +64,7 @@ namespace MathExtended
             return new Matrix(matrixRet);
         }
         
-        public Matrix MatrixSubtract(Matrix matrixFrom, Matrix matrixSubtract)
+        public static Matrix MatrixSubtract(Matrix matrixFrom, Matrix matrixSubtract)
         {
             double[,] matrixRet = new double[4, 4];
 
@@ -77,8 +77,8 @@ namespace MathExtended
             }
             return new Matrix(matrixRet);
         }
-        
-        public Matrix MatrixScale(Matrix matrix, double scale)
+
+        public static  Matrix MatrixScale(Matrix matrix, double scale)
         {
             double[,] matrixRet = new double[4,4];
             for (int i = 0; i < 4; i++)
@@ -91,7 +91,7 @@ namespace MathExtended
             return new Matrix(matrixRet);
         }
         
-        public Matrix MultiplyMatrix(Matrix matrixLeft,Matrix matrixRight, double factor)
+        public static Matrix MultiplyMatrix(Matrix matrixLeft,Matrix matrixRight, double factor)
         {
             double[,] matrixL = matrixLeft.GetMatrix();
             double[,] matrixR = matrixRight.GetMatrix();

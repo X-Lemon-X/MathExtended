@@ -17,18 +17,18 @@ namespace MathExtended
         {
             if (CompareTo.GetEnd() < interval.GetBegining() || CompareTo.GetBegining() > interval.GetEnd())
             {
-                return true;
+                return false;
             }
             else if (CompareTo.GetEnd() == interval.GetBegining())
             {
-                return CompareTo.GetEndBracket() != interval.GetBegBracket();
+                return !((CompareTo.GetEndBracket() != interval.GetBegBracket()) || (CompareTo.GetEndBracket() == Bracket.Open && interval.GetBegBracket() == Bracket.Open));
             }
             else if (CompareTo.GetBegining() == interval.GetEnd())
             {
-                return CompareTo.GetBegBracket() != interval.GetEndBracket();            
+                return !((CompareTo.GetBegBracket() != interval.GetEndBracket()) || (CompareTo.GetBegBracket() == Bracket.Open && interval.GetEndBracket()==Bracket.Open));            
             }
 
-            return false;
+            return true;
         }
 
         private static bool BracketCheckLeft(Bracket bracket, double value, double valueCompared)

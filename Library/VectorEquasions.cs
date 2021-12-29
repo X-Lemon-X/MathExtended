@@ -3,7 +3,13 @@ namespace MathExtended
 {
     public class VectorEquasions
     {
-        public Vector AddVectors(Vector vector1, Vector vector2)
+        public static bool CheckIfVectorsAreEqual(Vector vector1, Vector vector2, Diviation diviation)
+        {
+            bool con = Equasions.CompareValues(vector1.GetX(), vector2.GetX(), diviation);
+            con = con && Equasions.CompareValues(vector1.GetY(), vector2.GetY(), diviation);
+            return con && Equasions.CompareValues(vector1.GetZ(), vector2.GetZ(), diviation);
+        }
+        public static Vector AddVectors(Vector vector1, Vector vector2)
         { 
             double x = vector1.GetX() + vector2.GetX();
             double y = vector1.GetY() + vector2.GetY();
@@ -12,12 +18,12 @@ namespace MathExtended
             return new Vector(x, y, z);
         }
 
-        public Vector ScaleVector(Vector vector, double scale)
+        public static Vector ScaleVector(Vector vector, double scale)
         {
             return new Vector(vector.GetX() * scale, vector.GetY() * scale, vector.GetZ() * scale);
         }
 
-        public Vector MultiplyVectorByMatrix(Vector vector, Matrix matrix, double factor)
+        public static Vector MultiplyVectorByMatrix(Vector vector, Matrix matrix, double factor)
         {
             double[,] vectorMatrix = new double[4, 4];
 
@@ -26,19 +32,13 @@ namespace MathExtended
             vectorMatrix[2, 0] = vector.GetZ();
 
             Matrix matrixVector = new Matrix(vectorMatrix);
-            MatrixEquasion eq = new MatrixEquasion();
 
-            vectorMatrix = eq.MultiplyMatrix(matrix,matrixVector, factor).GetMatrix();
+            vectorMatrix = MatrixEquasion.MultiplyMatrix(matrix,matrixVector, factor).GetMatrix();
 
             return new Vector(vectorMatrix[0, 0], vectorMatrix[1, 0], vectorMatrix[2, 0]);
         }
 
-        public Point MultiplyPointByMatrix(Point point, Matrix matrix, double factor)
-        {
-            return new Point(MultiplyVectorByMatrix(new Vector(point), matrix, factor));
-        }
-
-        public Point MovePointByVector(Point point, Vector vector)
+        public static Point MovePointByVector(Point point, Vector vector)
         {
             double x = point.GetX() + vector.GetX();
             double y = point.GetY() + vector.GetY();
@@ -46,7 +46,7 @@ namespace MathExtended
             return new Point(x,y,z);
         }
 
-        public Vector ReSizeVectorToLength(Vector vector, double length)
+        public static Vector ReSizeVectorToLength(Vector vector, double length)
         {
             double skala = length / vector.GetLength();
             return ScaleVector(vector, skala);

@@ -5,7 +5,7 @@
     <OutputType>Library</OutputType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>MathExtended_Lemon_X</PackageId>
-    <Version>3.0.6</Version>
+    <Version>3.1.0</Version>
     <Authors>Lemon_X</Authors>
     <Company>Lemon_X</Company>
     <Product>MathExtended</Product>
