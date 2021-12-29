@@ -47,11 +47,21 @@ namespace MathExtended
         {
             foreach (var item in equasions)
             {
-                if (IntervalsEquasion.CheckIfInterval(argument, item.GetInterval()))
+                if (IntervalsEquasion.CheckValueInInterval(argument, item.GetInterval()))
                 {
                     return item;
                 }
             }
+            return new Equasion();
+        }
+
+        private Equasion FindEquasion(Equasion equasion)
+        {
+            foreach (var item in equasions)
+            {
+
+            }
+
             return new Equasion();
         }
 

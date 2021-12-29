@@ -27,8 +27,8 @@ namespace MathExtendedConsole
             interval = new Interval(100, 150, Bracket.Open, Bracket.Close);
             LinearEquasion linear2 = new LinearEquasion(-2, new Vector(), interval);
 
-            interval = new Interval(150, 300, Bracket.Open, Bracket.Close);
-            QuadraticEquasion quadratic = new QuadraticEquasion(1,-200,0, interval);
+            interval = new Interval(150, 200, Bracket.Open, Bracket.Close);
+            QuadraticEquasion quadratic = new QuadraticEquasion(2,-200,0, interval);
 
             CombinedEquasions cb = new CombinedEquasions();
             cb.AddEquasion(linear);
@@ -36,7 +36,7 @@ namespace MathExtendedConsole
             cb.AddEquasion(quadratic);
 
 
-            for (int i = -55; i < 305; i++)
+            for (int i = -55; i < 205; i++)
             {
                 var po = cb.CalculateEquasion((double)i);
                 Console.WriteLine(MEConvertToString.FromPoint(po));
