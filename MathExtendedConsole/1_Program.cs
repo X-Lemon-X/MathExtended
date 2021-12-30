@@ -29,8 +29,7 @@ namespace MathExtendedConsole
 
             CombinedEquasions cb = new CombinedEquasions();
             cb.AddEquasion(linear);
-            cb.AddEquasion(linear2);
-            cb.AddEquasion(quadratic);
+            cb.AddEquasion(linear2);            cb.AddEquasion(quadratic);
 
             Equasion equasion = new Equasion(linear);
 

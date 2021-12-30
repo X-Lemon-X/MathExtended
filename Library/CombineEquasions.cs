@@ -49,6 +49,20 @@ namespace MathExtended
             return FindEquasion(argument).GetEquasionType();
         }
 
+        public void Rotate(Rotation rotationOX, Rotation rotationOY, double argument)
+        {
+            Equasion equasion = FindEquasion(argument);
+            equasion.Rotate(rotationOX, rotationOY);
+        }
+
+        public void RotationCurrent(bool rotationOX, bool rotationOY)
+        {
+            foreach (Equasion item in equasions)
+            {
+                item.RotateCurrent(rotationOX,rotationOY);
+            }
+        }
+
         private Equasion FindEquasion(double argument)
         {
             foreach (var item in equasions)
@@ -72,7 +86,5 @@ namespace MathExtended
             }
             return null;
         }
-
     }
-
 }

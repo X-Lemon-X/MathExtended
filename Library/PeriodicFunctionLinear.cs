@@ -4,7 +4,7 @@ namespace MathExtended
     public class PeriodicLinearEquasion
     {
         private double tangens, period;
-        private int rotationX = 1, rotationY = 1;
+        private double rotationX = 1, rotationY = 1;
         private Vector vector;
         private bool BeginAtZero=true;
         Interval interval;
@@ -24,6 +24,13 @@ namespace MathExtended
             if (rotationOY == Rotation.OY) rotationY = -1;
             if (rotationOY == Rotation.NOY) rotationY = 1;
         }
+
+        public void RotateCurrent(bool rotationOX, bool rotationOY)
+        {
+            if (rotationOX) rotationX *= -1.0;
+            if (rotationOY) rotationY *= -1.0;
+        }
+
         public Point CalculateFunction(double argument)
         {
             if (!IntervalsEquasion.CheckValueInInterval(argument, interval))

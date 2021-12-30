@@ -31,6 +31,12 @@ namespace MathExtended
             if (rotationOY == Rotation.NOY) rotationY = 1.0;
         }
 
+        public void RotateCurrent(bool rotationOX, bool rotationOY)
+        {
+            if (rotationOX) rotationX *= -1.0;
+            if (rotationOY) rotationY *= -1.0;
+        }
+
         public Point CalculateFuntion(double argument)
         {
             if (!IntervalsEquasion.CheckValueInInterval(argument, interval))
