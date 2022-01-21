@@ -5,6 +5,7 @@ namespace MathExtended
     {
         private double X, Y, Z;
         private bool emptyPoint = false;
+
         public Point(double X, double Y, double Z)
         {
             this.X = X;

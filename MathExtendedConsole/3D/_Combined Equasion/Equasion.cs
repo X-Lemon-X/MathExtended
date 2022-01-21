@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace MathExtended
 {
@@ -17,7 +13,7 @@ namespace MathExtended
         DelegateRotate delegateRotate;
         DelageteRotationCurrent delageteRotationCurrent;
         EquasionsType type;
-       
+
         public Equasion(LinearEquasion linearEquasion)
         {
             this.type = EquasionsType.Linear;

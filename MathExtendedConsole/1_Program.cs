@@ -14,7 +14,9 @@ namespace MathExtendedConsole
             Point point = new Point(10,20,30);
             Console.WriteLine(MEConvertToString.FromPoint(point));
             Console.WriteLine("Vector");
+
             Vector vector = new Vector(point);
+
             Console.WriteLine(MEConvertToString.FromVector(vector));
             Console.WriteLine("Matrix");
 
@@ -29,7 +31,8 @@ namespace MathExtendedConsole
 
             CombinedEquasions cb = new CombinedEquasions();
             cb.AddEquasion(linear);
-            cb.AddEquasion(linear2);            cb.AddEquasion(quadratic);
+            cb.AddEquasion(linear2);           
+            cb.AddEquasion(quadratic);
 
             Equasion equasion = new Equasion(linear);
 
@@ -40,12 +43,13 @@ namespace MathExtendedConsole
 
                 double rad = Math.PI / 2.0;
 
-                Point po2 = PointEquasions.MultiplyPointByMatrix(po, MatrixEquasion.MatrixRotationZ(new Matrix(), rad),1);
+                Point po2 = PointEquasions.MultiplyPointByMatrix(po, MatrixEquasion.MatrixRotationZ(new Matrix(), rad), 1);
 
                 Point po3 = equasion.CalculateArgument(i);
 
                 Console.WriteLine(MEConvertToString.FromPoint(po) + "  -> " + MEConvertToString.FromPoint(po2) + " -> "+ MEConvertToString.FromPoint(po3) );
             }
+
 
             Console.ReadLine();
         }

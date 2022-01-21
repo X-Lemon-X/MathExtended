@@ -15,7 +15,7 @@
             this.bracketBeg = bracketBeg;
         }
 
-        public Interval(double beg, Bracket bracketBeg)
+        public Interval(double beg , Bracket bracketBeg)
         {
             this.beg = beg;
             this.bracketBeg = bracketBeg;
