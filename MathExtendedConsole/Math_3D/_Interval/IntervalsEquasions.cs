@@ -1,6 +1,5 @@
-﻿using System;
-
-namespace MathExtended
+﻿
+namespace MathExtended.Math_3D
 {
     public class IntervalsEquasion
     {

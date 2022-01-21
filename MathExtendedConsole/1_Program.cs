@@ -1,5 +1,6 @@
 ﻿using System;
-using MathExtended;
+using MathExtended.Math_3D;
+using MathExtended.Statistics;
 
 namespace MathExtendedConsole
 {

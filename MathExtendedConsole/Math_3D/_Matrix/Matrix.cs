@@ -1,4 +1,4 @@
-﻿namespace MathExtended
+﻿namespace MathExtended.Math_3D
 {
     public class Matrix
     {

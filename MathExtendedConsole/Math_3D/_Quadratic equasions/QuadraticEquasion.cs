@@ -1,19 +1,27 @@
 ﻿
-namespace MathExtended
+namespace MathExtended.Math_3D
 {
-    public class LinearEquasion
+    public class QuadraticEquasion
     {
-        private double tangens;
+        double A, B, rotationX=1, rotationY=1;
         Vector vector;
-        double rotationX=1, rotationY=1;
         Interval interval;
-        public LinearEquasion(double tangens, Vector vector, Interval interval)
+
+        public QuadraticEquasion(double A, double B, double C, Interval interval)
         {
-            this.tangens = tangens;
-            this.vector = vector;
+            this.A = A;
+            this.B = B;
+            this.vector = new Vector(0,C,0);
             this.interval = interval;
         }
 
+        public QuadraticEquasion(Vector vector, double A, double B, Interval interval)
+        {
+            this.vector = vector;
+            this.A = A;
+            this.B = B;
+            this.interval = interval;
+        }
         public void Rotate(Rotation rotationOX, Rotation rotationOY)
         {
             if (rotationOX == Rotation.OX) rotationX = -1.0;
@@ -26,26 +34,21 @@ namespace MathExtended
         public void RotateCurrent(bool rotationOX, bool rotationOY)
         {
             if (rotationOX) rotationX *= -1.0;
-            if (rotationOY) rotationY *= -1.0;     
+            if (rotationOY) rotationY *= -1.0;
         }
 
-        public Point CalculateFunction(double argument)
+        public Point CalculateFuntion(double argument)
         {
-
             if (!IntervalsEquasion.CheckValueInInterval(argument, interval))
             {
                 return new Point();
             }
 
-            double Y = argument - vector.GetX();
-            
-            Y *= rotationX;
-            Y *= tangens;
-            Y += vector.GetY();
-
-            Y *= rotationY;
-
-            return new Point(argument,Y,vector.GetZ());
+            argument -= vector.GetX();
+            argument *= rotationX;
+            double Y = (A * argument * argument) + (B * argument) + vector.GetY();
+            return new Point(argument, Y * rotationY, vector.GetZ());
+   
         }
 
         public Interval GetInterval()
