@@ -1,5 +1,4 @@
-﻿
-namespace MathExtended.Math_3D
+﻿namespace MathExtended.Math_3D
 {
     public class QuadraticEquasion
     {

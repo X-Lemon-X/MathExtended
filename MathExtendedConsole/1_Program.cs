@@ -51,6 +51,15 @@ namespace MathExtendedConsole
                 Console.WriteLine(MEConvertToString.FromPoint(po) + "  -> " + MEConvertToString.FromPoint(po2) + " -> "+ MEConvertToString.FromPoint(po3) );
             }
 
+            double[] data = { 4,84,243558,1245,53,24,234,89,21,6,90965,48,546,85,74,3, 9, 5, 1, 2,1,68,8,2,78,0,2,6,9,23,6,5,7623,234,34,6,66 };
+            DataForStatistics dataFor= new DataForStatistics(data);
+
+            StatisticsData sd = new StatisticsData(dataFor);
+            
+            sd.GetAvarage();
+            sd.GetStandardDiviation();
+            DataForStatistics sdRet =  sd.SortDataBubble();
+            sd.GetMediana();
 
             Console.ReadLine();
         }
