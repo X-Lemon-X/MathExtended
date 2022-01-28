@@ -1,7 +1,5 @@
 ﻿using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
-using MathExtended.Pictures.RGB_Matrix;
 
 namespace MathExtended.Pictures
 {
@@ -9,19 +7,13 @@ namespace MathExtended.Pictures
     {
         Bitmap picture;
         int x, y;
-
-        public RawPhotoData(int width, int height)
-        {
-            picture = new Bitmap(width, height, PixelFormat.Format32bppArgb);
-            x = width;
-            y = height;
-        }
-
-        public void GetDataFromImage(string path)
+        public RawPhotoData(string path)
         {
             if (File.Exists(path))
             {
                 Image image = Image.FromFile(path);
+                x = image.Width;
+                y = image.Height;
                 picture = new Bitmap(image);
             }
             else
@@ -30,9 +22,30 @@ namespace MathExtended.Pictures
             }
         }
 
+        public RawPhotoData(int width, int height)
+        {
+            x = width;
+            y = height;
+            picture = new Bitmap(width,height,System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+        }
+
         public void SetPixel(int x, int y, Color color)
         {
             CheckIfCordinantsFit(x, y);
+            picture.SetPixel(x, y, color);
+        }
+
+        public void SetMatrixMiddlePoint(int x, int y, RGBMatrix rgb)
+        {
+            CheckIfCordinantsFit(x, y);
+
+            int a = rgb.pv(rgb.GetMatrixAlpha().GetMatrix()[1,1]);
+            int b = rgb.pv(rgb.GetMatrixBlue().GetMatrix()[1, 1]);
+            int g = rgb.pv(rgb.GetMatrixGreen().GetMatrix()[1, 1]);
+            int r = rgb.pv(rgb.GetMatrixRed().GetMatrix()[1, 1]);
+
+            Color color = Color.FromArgb(a, r, g, b);
+
             picture.SetPixel(x, y, color);
         }
 
@@ -62,29 +75,43 @@ namespace MathExtended.Pictures
 
         private int CheckX(int x)
         {
-            if (x > this.x)
-                return this.x;
-            else if (x < 0)
+            if (x >= this.x)
+                return this.x-1;
+            else if (x <= 0)
                 return 0;
             else
                 return x;
         }
+        
         private int CheckY(int y)
         {
-            if (y > this.y)
-                return this.y;
-            else if (y < 0)
+            if (y >= this.y)
+                return this.y - 1;
+            else if (y <= 0)
                 return 0;
             else
                 return y;
         }
 
+        public int GetWidth()
+        {
+            return x;
+        }
+
+        public int GetHight()
+        {
+            return y;
+        }
+
         private void CheckIfCordinantsFit(int x, int y)
         {
             if (x > this.x || y > this.y)
-                throw new InvalidDataException("x or y value are aou of boundries");
+                throw new InvalidDataException("x or y value are out of boundries");
                 
         }
-
+        public void SaveToFile(string path)
+        {
+            picture.Save(path, System.Drawing.Imaging.ImageFormat.Png);
+        }
     }
 }
