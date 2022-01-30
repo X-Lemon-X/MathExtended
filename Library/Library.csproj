@@ -10,6 +10,7 @@
     <Company>Lemon_X</Company>
     <Product>MathExtended</Product>
     <RepositoryUrl>https://github.com/X-Lemon-X/MathExtended</RepositoryUrl>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
 </Project>

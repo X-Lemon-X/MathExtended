@@ -12,7 +12,7 @@ namespace MathExtended.Pictures
     {
         public delegate RGBMatrix ProcessingFunction(Matrix matrix);
 
-        public RawPhotoData PrecessImageUsingMatrix(RawPhotoData rawPhotoData, Matrix multiplication)
+        public RawPhotoData PrecessImageUsingMatrix(RawPhotoData rawPhotoData, Matrix multiplication, double weight)
         {
             RawPhotoData rwRet = new RawPhotoData(rawPhotoData.GetWidth(), rawPhotoData.GetHight());
 
@@ -21,17 +21,17 @@ namespace MathExtended.Pictures
                 for (int x = 0; x < rawPhotoData.GetWidth(); x++)
                 {
                     Color rgb = rawPhotoData.Getpixel(x, y);
-                    rgb = MultiplyPixel(rgb, multiplication);
+                    rgb = MultiplyPixel(rgb, multiplication,weight);
                     rwRet.SetPixel(x,y,rgb);
                 }
             }
             return rwRet;
         }
 
-        public Color MultiplyPixel(Color color, Matrix matrix)
+        public Color MultiplyPixel(Color color, Matrix matrix, double weight)
         {
             Vector vector = new Vector(color.R, color.G, color.B);
-            vector = VectorEquasions.MultiplyVectorByMatrix(vector, matrix,1);
+            vector = VectorEquasions.MultiplyVectorByMatrix(vector, matrix,weight);
             return Color.FromArgb(pv(vector.GetX()), pv(vector.GetY()), pv(vector.GetZ()));
         }
 
@@ -58,9 +58,6 @@ namespace MathExtended.Pictures
         public int PrepareValueForRGB(double value)
         {
             int ret = Math.Abs(Convert.ToInt32(value));
-
-            
-
             if (ret > 255)
                 return 255;
             else if (ret < 0)

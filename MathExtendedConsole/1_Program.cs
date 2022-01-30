@@ -32,7 +32,7 @@ namespace MathExtendedConsole
 
             Matrix matrix = new Matrix(mar2);
 
-            rwd = imo.PrecessImageUsingMatrix(rwd,matrix);
+            rwd = imo.PrecessImageUsingMatrix(rwd,matrix,1);
 
             path = @"C:\Users\patdu\Desktop\image.png";
 
