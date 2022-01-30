@@ -9,6 +9,7 @@ namespace MathExtendedConsole
     {
         static void Main(string[] args)
         {
+            //asfd
             string path= @"C:\Users\patdu\Desktop\test.jpg";
             RawPhotoData rwd = new RawPhotoData(path);
 
