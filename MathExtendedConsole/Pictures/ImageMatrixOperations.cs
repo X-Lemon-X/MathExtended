@@ -12,7 +12,7 @@ namespace MathExtended.Pictures
     {
         public delegate RGBMatrix ProcessingFunction(Matrix matrix);
 
-        public RawPhotoData PrecessImageUsingMatrix(RawPhotoData rawPhotoData, Matrix multiplication, double weight)
+        public RawPhotoData PrecessImageMask(RawPhotoData rawPhotoData, Matrix multiplication, double weight)
         {
             RawPhotoData rwRet = new RawPhotoData(rawPhotoData.GetWidth(), rawPhotoData.GetHight());
 
@@ -28,6 +28,22 @@ namespace MathExtended.Pictures
             return rwRet;
         }
 
+        public RawPhotoData PrecessImagePixels(RawPhotoData rawPhotoData, Matrix multiplication)
+        {
+            RawPhotoData rwRet = new RawPhotoData(rawPhotoData.GetWidth(), rawPhotoData.GetHight());
+
+            for (int y = 0; y < rawPhotoData.GetHight(); y++)
+            {
+                for (int x = 0; x < rawPhotoData.GetWidth(); x++)
+                {
+                    Color[,] rgb = rawPhotoData.GetMatrix(x, y);
+                    rwRet.SetPixel(x, y, AddPixels(rgb, multiplication));
+                }
+            }
+            return rwRet;
+
+        }
+
         public Color MultiplyPixel(Color color, Matrix matrix, double weight)
         {
             Vector vector = new Vector(color.R, color.G, color.B);
@@ -35,27 +51,23 @@ namespace MathExtended.Pictures
             return Color.FromArgb(pv(vector.GetX()), pv(vector.GetY()), pv(vector.GetZ()));
         }
 
-        public RGBMatrix MultiplyByMatrix(RGBMatrix rgb ,Matrix matrix)
+        public Color AddPixels(Color[,] color, Matrix matrix)
         {
-            Matrix a = rgb.GetMatrixAlpha();
-            Matrix b = rgb.GetMatrixBlue();
-            Matrix g = rgb.GetMatrixGreen();
-            Matrix r = rgb.GetMatrixRed();
+            double R = 0, G = 0, B = 0;
 
-            a = MatrixEquasion.MultiplyMatrix(matrix, a, 1);
-            b = MatrixEquasion.MultiplyMatrix(matrix, b, 1);
-            g = MatrixEquasion.MultiplyMatrix(matrix, g, 1);
-            r = MatrixEquasion.MultiplyMatrix(matrix, r, 1);
-
-            return new RGBMatrix(r, b, g, a);
+            for (int i = 0; i < 3; i++)
+            {
+                for (int p = 0; p < 3; p++)
+                {
+                    R += color[i, p].R * matrix.GetMatrix()[i, p];
+                    G += color[i, p].G * matrix.GetMatrix()[i, p];
+                    B += color[i, p].B * matrix.GetMatrix()[i, p];
+                }
+            }
+            return Color.FromArgb(pv(Convert.ToInt32(R)), pv(Convert.ToInt32(G)), pv(Convert.ToInt32(B)));
         }
 
         public int pv(double value)
-        {
-            return PrepareValueForRGB(value);
-        }
-
-        public int PrepareValueForRGB(double value)
         {
             int ret = Math.Abs(Convert.ToInt32(value));
             if (ret > 255)

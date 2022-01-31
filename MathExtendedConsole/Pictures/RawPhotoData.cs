@@ -55,9 +55,8 @@ namespace MathExtended.Pictures
             return picture.GetPixel(x, y);
         }
 
-        public RGBMatrix GetMatrix(int x, int y)
+        public Color[,] GetMatrix(int x, int y)
         {
-            CheckIfCordinantsFit(x, y);
             Color[,] pixels =
             {
                 {Rcc(x - 1, y - 1),  Rcc(x, y - 1),  Rcc(x + 1, y - 1)},
@@ -65,7 +64,7 @@ namespace MathExtended.Pictures
                 {Rcc(x - 1, y + 1),  Rcc(x, y + 1),  Rcc(x + 1, y + 1)},
             };
 
-            return new RGBMatrix(pixels);
+            return pixels;
         }
 
         private Color Rcc(int x, int y)

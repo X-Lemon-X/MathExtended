@@ -10,35 +10,36 @@ namespace MathExtendedConsole
         static void Main(string[] args)
         {
             //asfd
-            string path= @"C:\Users\patdu\Desktop\test.jpg";
-            RawPhotoData rwd = new RawPhotoData(path);
+
+            Console.WriteLine("Working on it!");
+
+            RawPhotoData rwd = new RawPhotoData(@"C:\Users\patdu\Desktop\test.jpg");
 
             ImageMatrixOperations imo = new ImageMatrixOperations();
 
             double[,] mar = 
             {
-            {1.0/3,1.0/3,1.0/3,0},
-            {1.0/3,1.0/3,1.0/3,0},
-            {1.0/3,1.0/3,1.0/3,0},
-            {0,0,0,1},
+                {1.0/3,1.0/3,1.0/3,0},
+                {1.0/3,1.0/3,1.0/3,0},
+                {1.0/3,1.0/3,1.0/3,0},
+                {0,0,0,1},
             };
 
             double[,] mar2 =
             {
-                {-1,0,0,255 },
-                {-1,0,0,255 },
-                {-1,0,0,255 },
+                {-1,-1,-1,255 },
+                {-1, 8,-1,255 },
+                {-1,-1,-1,255 },
                 {0,0,0,0 },
             };
 
-            Matrix matrix = new Matrix(mar2);
+            rwd = imo.PrecessImageMask(rwd, new Matrix(mar), 1);
 
-            rwd = imo.PrecessImageUsingMatrix(rwd,matrix,1);
+            //rwd = imo.PrecessImagePixels(rwd, new Matrix(mar2));
 
-            path = @"C:\Users\patdu\Desktop\image.png";
+            rwd.SaveToFile(@"C:\Users\patdu\Desktop\image.png");
 
-            rwd.SaveToFile(path);
-
+            Console.WriteLine("Done!");
             Console.ReadLine();
         }
 
