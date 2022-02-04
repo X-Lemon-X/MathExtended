@@ -17,27 +17,28 @@ namespace MathExtendedConsole
 
             ImageMatrixOperations imo = new ImageMatrixOperations();
 
-            double[,] mar = 
-            {
-                {1.0/3,1.0/3,1.0/3,0},
-                {1.0/3,1.0/3,1.0/3,0},
-                {1.0/3,1.0/3,1.0/3,0},
-                {0,0,0,1},
-            };
+            //rwd = imo.PrecessImageMask(rwd, new Matrix(mar), 1);
 
-            double[,] mar2 =
-            {
-                {-1,-1,-1,255 },
-                {-1, 8,-1,255 },
-                {-1,-1,-1,255 },
-                {0,0,0,0 },
-            };
+            //rwd = imo.PrecessImageMask(rwd, ImageManipulationMatrixs.GrayScale);
+            //rwd = imo.PrecessImagePixels(rwd, ImageManipulationMatrixs.Sharpen);
+            //rwd = imo.PrecessImagePixels(rwd, ImageManipulationMatrixs.EdgeDetection);
+            //rwd.SaveToFile(@"C:\Users\patdu\Desktop\image1.png");
 
-            rwd = imo.PrecessImageMask(rwd, new Matrix(mar), 1);
+            //rwd = new RawPhotoData(@"C:\Users\patdu\Desktop\test.jpg");
+            //rwd = imo.PrecessImagePixels(rwd, ImageManipulationMatrixs.Blur);
+            //rwd.SaveToFile(@"C:\Users\patdu\Desktop\image2.png");
 
-            //rwd = imo.PrecessImagePixels(rwd, new Matrix(mar2));
+            //rwd = new RawPhotoData(@"C:\Users\patdu\Desktop\test.jpg");
+            //rwd = imo.PrecessImageMask(rwd, ImageManipulationMatrixs.GrayScale);
+            //rwd.SaveToFile(@"C:\Users\patdu\Desktop\image3.png");
 
-            rwd.SaveToFile(@"C:\Users\patdu\Desktop\image.png");
+            //rwd = new RawPhotoData(@"C:\Users\patdu\Desktop\test.jpg");
+
+            rwd = imo.RemoveMetadata(rwd);
+
+
+            rwd.SaveToFile(@"C:\Users\patdu\Desktop\image4.png");
+
 
             Console.WriteLine("Done!");
             Console.ReadLine();

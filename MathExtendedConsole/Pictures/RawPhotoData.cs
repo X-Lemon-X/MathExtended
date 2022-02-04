@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 
 namespace MathExtended.Pictures
@@ -6,12 +7,14 @@ namespace MathExtended.Pictures
     public class RawPhotoData
     {
         Bitmap picture;
+        Image image;
+
         int x, y;
         public RawPhotoData(string path)
         {
             if (File.Exists(path))
             {
-                Image image = Image.FromFile(path);
+                image = Image.FromFile(path);
                 x = image.Width;
                 y = image.Height;
                 picture = new Bitmap(image);
@@ -31,14 +34,11 @@ namespace MathExtended.Pictures
 
         public void SetPixel(int x, int y, Color color)
         {
-            CheckIfCordinantsFit(x, y);
             picture.SetPixel(x, y, color);
         }
 
         public void SetMatrixMiddlePoint(int x, int y, RGBMatrix rgb)
         {
-            CheckIfCordinantsFit(x, y);
-
             int a = rgb.pv(rgb.GetMatrixAlpha().GetMatrix()[1,1]);
             int b = rgb.pv(rgb.GetMatrixBlue().GetMatrix()[1, 1]);
             int g = rgb.pv(rgb.GetMatrixGreen().GetMatrix()[1, 1]);
@@ -51,11 +51,10 @@ namespace MathExtended.Pictures
 
         public Color Getpixel(int x, int y)
         {
-            CheckIfCordinantsFit(x, y);
             return picture.GetPixel(x, y);
         }
 
-        public Color[,] GetMatrix(int x, int y)
+        public Color[,] GetMatrixColors(int x, int y)
         {
             Color[,] pixels =
             {
@@ -92,6 +91,12 @@ namespace MathExtended.Pictures
                 return y;
         }
 
+
+        public Image GetImage()
+        {
+            return image;
+        }
+
         public int GetWidth()
         {
             return x;
@@ -108,6 +113,7 @@ namespace MathExtended.Pictures
                 throw new InvalidDataException("x or y value are out of boundries");
                 
         }
+       
         public void SaveToFile(string path)
         {
             picture.Save(path, System.Drawing.Imaging.ImageFormat.Png);
